@@ -1,7 +1,10 @@
 def shittyoverlappingsums():
     with open('output.txt', 'r') as f:
+        """slower, but more economical (my choice tbh)"""
         floats = []
-        [floats.append(int(i.strip()) / 4294967295) for i in f.readlines()]
+        [floats.append(int(i.strip()) / 4294967295) for i in f.readlines() if i.strip()]
+        """10% quicker, consumes much more PowerPC (hehe XD)"""
+        # floats = [int(i.strip()) / 4294967295 for i in f.readlines() if i.strip()]
 
     f.close()
 
