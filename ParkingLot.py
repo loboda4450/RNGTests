@@ -10,7 +10,7 @@ def shittyparkinglot():
             [floats.append(int(i.strip())) for i in f.readlines() if i.strip()]
 
         f.close()
-        print("Conversion finished")
+
     except Exception as e:
         print(e)
 
