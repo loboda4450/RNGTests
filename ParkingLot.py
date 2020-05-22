@@ -20,7 +20,7 @@ def shittyparkinglot():
 
         else:
             parked += 1
-            parking[floats[xi], floats[xi + 1]] = 1
+            parking[floats[xi], floats[xi + 1]] = True
 
         xi += 2
         tries -= 1
