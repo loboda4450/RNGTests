@@ -42,4 +42,6 @@ def shittyparkinglot():
     for i in results:
         print(results[i])
 
+    return results
+
 
