@@ -1,6 +1,6 @@
 def shittysqueezetest():
-    over = 0  # over 48
-    below = 0  # below 6
+    over = 0
+    below = 0
 
     try:
         with open('output32bit.txt', 'r') as f:

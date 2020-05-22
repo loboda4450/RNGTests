@@ -4,8 +4,8 @@ from ParkingLot import shittyparkinglot
 
 
 def main():
-    # shittyoverlappingsums()
-    # shittyparkinglot()
+    shittyoverlappingsums()
+    shittyparkinglot()
     shittysqueezetest()
 
 
