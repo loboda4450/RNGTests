@@ -1,11 +1,10 @@
 def shittyparkinglot():
-    parked, crashed = 0, 0
     xi = 0
-    tries = 12000
-    parking = {}
+    test_no = 0
+    results = {}
 
     try:
-        with open('output100.txt', 'r') as f:
+        with open('output100v2.txt', 'r') as f:
             floats = []
             [floats.append(int(i.strip())) for i in f.readlines() if i.strip()]
 
@@ -14,15 +13,33 @@ def shittyparkinglot():
     except Exception as e:
         print(e)
 
-    while tries and xi + 2 != len(floats):
-        if (floats[xi], floats[xi + 1]) in parking:
-            crashed += 1
+    while xi + 2 < len(floats):
+        parked, crashed = 0, 0
+        tries = 12000
+        parking = {}
 
-        else:
-            parked += 1
-            parking[floats[xi], floats[xi + 1]] = True
+        while tries and xi + 2 != len(floats):
+            if (floats[xi], floats[xi + 1]) in parking:
+                crashed += 1
 
-        xi += 2
-        tries -= 1
+            else:
+                parked += 1
+                parking[floats[xi], floats[xi + 1]] = True
 
-    print(f'\nCrashed {crashed} cars.\nParked {parked} cars.')
+            xi += 2
+            tries -= 1
+
+        res = (crashed - 3523)/21.9
+
+        # print(f'\nCrashed {crashed} cars.\nParked {parked} cars.\nTried {12000 - tries} times.\n {res}')
+
+        results[test_no] = {'crashed': crashed,
+                            'parked': parked,
+                            'no. tries': 12000 - tries,
+                            'result': res}
+        test_no += 1
+
+    for i in results:
+        print(results[i])
+
+
