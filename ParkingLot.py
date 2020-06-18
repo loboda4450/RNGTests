@@ -1,7 +1,13 @@
+from scipy.stats import kstest
+import numpy as np
+
+
 def shittyparkinglot():
+    print("\n\n\nParkingLot")
     xi = 0
     test_no = 0
     results = {}
+    data = list()
 
     try:
         with open('output100v2.txt', 'r') as f:
@@ -29,19 +35,20 @@ def shittyparkinglot():
             xi += 2
             tries -= 1
 
-        res = (crashed - 3523)/21.9
+        res = (crashed - 3523) / 21.9
 
-        # print(f'\nCrashed {crashed} cars.\nParked {parked} cars.\nTried {12000 - tries} times.\n {res}')
+        data.append(res)
 
-        results[test_no] = {'crashed': crashed,
-                            'parked': parked,
-                            'no. tries': 12000 - tries,
-                            'result': res}
-        test_no += 1
+        if tries == 0:
+            results[test_no] = {'crashed': crashed,
+                                'parked': parked,
+                                'no. tries': 12000 - tries,
+                                'result': res}
+            test_no += 1
 
-    for i in results:
-        print(results[i])
+    data.sort()
+
+    x = np.linspace(data[0], data[len(data) - 1], num=len(data) - 1)
+    print(kstest(x, 'norm'))
 
     return results
-
-

@@ -1,6 +1,11 @@
+from scipy.stats import chisquare
+
+
 def shittysqueezetest():
+    print("\n\n\nSqueezeTest")
     over = 0
     below = 0
+    js = []
 
     try:
         with open('output32bit.txt', 'r') as f:
@@ -22,9 +27,13 @@ def shittysqueezetest():
 
         if j < 6:
             below += 1
+            js.append(j)
         elif j > 48:
             over += 1
+            js.append(j)
         else:
             continue
 
-    print(f'j > 48: {over} times.\nj < 6: {below} times.')
+    print(chisquare(js))
+
+    # print(f'j > 48: {over} times.\nj < 6: {below} times.')
